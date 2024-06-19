@@ -68,3 +68,27 @@ services:
 networks:
     net_local:
         driver: bridge
+
+6. 🔄 **Execute o script `sh-up.sh` no terminal**:
+    ```sh
+    sh sh-up.sh
+    ```
+
+7. 📊 **Verifique os contêineres em execução**:
+    ```sh
+    docker stats
+    ```
+
+8. 🔍 **Entre no contêiner do NGINX**:
+    ```sh
+    docker exec -it {id-container} bash
+    ```
+
+9. 🔐 **Dentro do contêiner, execute o Certbot**:
+    ```sh
+    certbot --nginx
+    ```
+
+Digite as credenciais solicitadas e verifique o status de sucesso. Certifique-se de que seu arquivo estático está funcionando com SSL corretamente.
+
+Nos próximos passos, aprenderemos a tornar a aplicação dinâmica com o React.
