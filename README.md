@@ -10,9 +10,6 @@
 
 ### 1. 🌐 Gerar certificados SSL com Certbot e NGINX (obrigatório)
 
-Primeiramente, baixe a base disponibilizada no link:
-- [Link do GitLab](#)
-
 ### Passos:
 
 1. 🚀 **Construa a imagem do NGINX**:
