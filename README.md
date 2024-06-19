@@ -1,43 +1,49 @@
-🚀 Guia de Configuração do Docker com NGINX e SSL
-Introdução
-🌐 Gerar certificados SSL com Certbot e NGINX
-🔄 Iniciar React com Proxy Reverso do NGINX
-⚙️ Iniciar API e MongoDB com Proxy Reverso
-Prática
-1. 🌐 Gerar certificados SSL com Certbot e NGINX (obrigatório)
+# 🚀 Guia de Configuração do Docker com NGINX e SSL
+
+## Introdução 
+
+1. 🌐 **Gerar certificados SSL com Certbot e NGINX**
+2. 🔄 **Iniciar React com Proxy Reverso do NGINX**
+3. ⚙️ **Iniciar API e MongoDB com Proxy Reverso**
+
+## Prática
+
+### 1. 🌐 Gerar certificados SSL com Certbot e NGINX (obrigatório)
+
 Primeiramente, baixe a base disponibilizada no link:
+- [Link do GitLab](#)
 
-Link do GitLab
-Passos:
-🚀 Construa a imagem do NGINX:
+### Passos:
 
-sh
-Copiar código
-docker compose build
-🖥️ Verifique as stacks do Docker Swarm (inicialize o Docker Swarm, se necessário):
+1. 🚀 **Construa a imagem do NGINX**:
+    ```sh
+    docker compose build
+    ```
 
-sh
-Copiar código
-docker swarm init
-docker stack ls
-🗑️ Remova qualquer serviço existente:
+2. 🖥️ **Verifique as stacks do Docker Swarm** (inicialize o Docker Swarm, se necessário):
+    ```sh
+    docker swarm init
+    docker stack ls
+    ```
 
-sh
-Copiar código
-docker stack rm {nome-do-servico}
-🌐 Crie a rede obrigatória:
+3. 🗑️ **Remova qualquer serviço existente**:
+    ```sh
+    docker stack rm {nome-do-servico}
+    ```
 
-sh
-Copiar código
-docker network create -d overlay --attachable net_swarm
-📜 Utilize o script sh-up.sh para construir as imagens:
+4. 🌐 **Crie a rede obrigatória**:
+    ```sh
+    docker network create -d overlay --attachable net_swarm
+    ```
 
-sh
-Copiar código
-sh sh-up.sh
-Arquivo docker-swarm.yml
-yaml
-Copiar código
+5. 📜 **Utilize o script `sh-up.sh` para construir as imagens**:
+    ```sh
+    sh sh-up.sh
+    ```
+
+### Arquivo `docker-swarm.yml`
+
+```yaml
 version: '3'
 services:
     nginx:
@@ -62,27 +68,3 @@ services:
 networks:
     net_local:
         driver: bridge
-🔄 Execute o script sh-up.sh no terminal:
-
-sh
-Copiar código
-sh sh-up.sh
-📊 Verifique os contêineres em execução:
-
-sh
-Copiar código
-docker stats
-🔍 Entre no contêiner do NGINX:
-
-sh
-Copiar código
-docker exec -it {id-container} bash
-🔐 Dentro do contêiner, execute o Certbot:
-
-sh
-Copiar código
-certbot --nginx
-Digite as credenciais solicitadas e verifique o status de sucesso. Certifique-se de que seu arquivo estático está funcionando com SSL corretamente.
-
-Nos próximos passos, aprenderemos a tornar a aplicação dinâmica com o React.
-
