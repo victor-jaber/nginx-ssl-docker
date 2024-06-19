@@ -68,6 +68,7 @@ services:
 networks:
     net_local:
         driver: bridge
+``` 
 
 6. 🔄 **Execute o script `sh-up.sh` no terminal**:
     ```sh
